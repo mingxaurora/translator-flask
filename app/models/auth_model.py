@@ -1,17 +1,24 @@
+from __future__ import annotations  #匯入撰寫型別註解的功能。Python3.7之前才需要。
+from typing import TYPE_CHECKING
 
+from sqlalchemy import Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
 
-from flaskr import db
+from app import db
 
-
+# 不是真的匯入，而是讓型別檢查工具知道此型別 (Post) 的存在
+if TYPE_CHECKING:
+    from .history_model import History
 
 class User(db.Model):  #也可以直接繼承 Base
     # __tablename__ = "user_account"  #不一定要有，如果沒有指定名稱則會直接使用類別名稱
     id: Mapped[int] = mapped_column(primary_key=True)
     username: Mapped[str] = mapped_column(String(30), unique=True)
-    password_hash: Mapped[str]
+    password_hash: Mapped[str] = mapped_column(String(255))
+    #relationship()之參數，'History' 為關聯模型名稱，owner 關聯的表格列名
+    histories : Mapped[list[History]] = relationship('History', back_populates='owner')  
 
     @property
     def password(self):
