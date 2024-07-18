@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+  <!-- 如果form 缺少 action 屬性，則會將資料送回目前頁面的 URL -->
   <form method="post">
     <label for="username">Username</label>
     <input name="username" id="username" required>
