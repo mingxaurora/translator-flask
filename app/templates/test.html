@@ -6,12 +6,12 @@
   <body>
     <h1>My App</h1>
     <form action="" method="post">
-      <label for="input_text">輸入文字：</label>
+      <label for="input_text">原文：</label>
       <input type="text" id="input_text" name="input_text">
       <button type="submit">確認</button>
     </form>
     {% if output_text %}
-      <p>輸出文字：{{ output_text }}</p>
+      <p>譯文：{{ output_text }}</p>
     {% endif %}
   </body>
 </html>
