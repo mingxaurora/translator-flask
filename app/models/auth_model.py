@@ -19,6 +19,7 @@ class User(db.Model):  #也可以直接繼承 Base
     username: Mapped[str] = mapped_column(String(30), unique=True)
     password_hash: Mapped[str] = mapped_column(String(255))
     #relationship()之參數，'History' 為關聯模型名稱，owner 關聯的表格列名。
+    #histories 不會直接變成資料表的欄位，推測僅僅是用於確認關聯
     histories : Mapped[list[History]] = relationship('History', back_populates='owner')  #Mapped[] ...。list[History] 用於指定提取的 History 的儲存方式。
 
     @property

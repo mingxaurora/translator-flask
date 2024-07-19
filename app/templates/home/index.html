@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="translation-form">
+    <form action="{{ url_for('home.translate') }}" method="post">
+      <label for="original_text">Original text：</label>
+      <input type="text" name="original_text" id="original_text">
+      <!--  下面兩個按鈕是一樣的功能，供參考。稍有不同的是，<input> 有透 css 設定。  -->
+      <input type="submit" value="Translate">
+      <button type="submit">Translate</button>
+    </form>
+    <p class="translation">Translation：{% if translated_text %}{{ translated_text }}{% endif %}</p>
+  </div>
+
+  <hr>
+
+  <div class="history">
+    <header>
+      <h2>History</h2>
+    </header>
+    <p>文章內容...</p>
+  </div>
+{% endblock %}
