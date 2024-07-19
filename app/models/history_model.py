@@ -24,7 +24,7 @@ class History(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     owner_id: Mapped[int] = mapped_column(Integer, ForeignKey('user.id'))
     original_text: Mapped[str] = mapped_column(String(255))
-    translation_text: Mapped[str] = mapped_column(String(255))
+    translated_text: Mapped[str] = mapped_column(String(255))
     created_at: Mapped[datetime] = mapped_column(DateTime, default=now_utc)
 
     #author_id 支持的使用者物件
