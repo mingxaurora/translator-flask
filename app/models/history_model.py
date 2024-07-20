@@ -22,6 +22,8 @@ def now_utc() -> datetime:
 class History(db.Model):
     # __tablename__ = ""
     id: Mapped[int] = mapped_column(primary_key=True)
+    #由於 owner 不會直接出現在表中，因此加入 owner_id 欄位顯示關聯。
+    #需要注意的是，實際上完成關聯的是 owner，而非 owner_id。
     owner_id: Mapped[int] = mapped_column(Integer, ForeignKey('user.id'))
     original_text: Mapped[str] = mapped_column(String(255))
     translated_text: Mapped[str] = mapped_column(String(255))

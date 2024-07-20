@@ -1,4 +1,4 @@
-from __future__ import annotations  #匯入撰寫型別註解的功能。Python3.7之前才需要。
+from __future__ import annotations  #匯入撰寫型別註解的功能。Python3.7 之前才需要。
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Integer, String
@@ -20,7 +20,8 @@ class User(db.Model):  #也可以直接繼承 Base
     password_hash: Mapped[str] = mapped_column(String(255))
     #relationship()之參數，'History' 為關聯模型名稱，owner 關聯的表格列名。
     #histories 不會直接變成資料表的欄位，推測僅僅是用於確認關聯
-    histories : Mapped[list[History]] = relationship('History', back_populates='owner')  #Mapped[] ...。list[History] 用於指定提取的 History 的儲存方式。
+    #Mapped[] ...。list[History] 用於指定提取的 History 的儲存方式。
+    histories : Mapped[list[History]] = relationship('History', back_populates='owner')  
 
     @property
     def password(self):
@@ -32,5 +33,6 @@ class User(db.Model):  #也可以直接繼承 Base
         self.password_hash = generate_password_hash(value)
 
     def check_password(self, value: str) -> bool:
+        '''比對註冊密碼和輸入密碼'''
         return check_password_hash(self.password_hash, value)
 

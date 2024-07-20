@@ -17,9 +17,11 @@ def login_required(view):
     用於確認使用者是否已登入的裝飾器，之後會添加到需要此功能的功能(路由)中。
     若使用者已登入，則會繼續執行功能；若沒有則重新導向登入頁面。
     '''
+    #裝飾器用於包裝每個 view func (路由)，添加檢查登入功能。
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
+            #若沒有登入，則重新導向登入頁面
             return redirect(url_for('auth.login'))
 
         return view(**kwargs)
@@ -33,7 +35,7 @@ def load_logged_in_user():
     此裝飾器用於註冊一個函式在應用程序請求之前執行，
     在這裡我們將在請求前先從 session 中載入使用者的資訊
     '''
-    user_id = session.get("user_id")
+    user_id = session.get("user_id")  
 
     if user_id is not None:
         g.user = db.session.get(User, user_id)

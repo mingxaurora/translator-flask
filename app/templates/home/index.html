@@ -22,6 +22,20 @@
     <header>
       <h2>History</h2>
     </header>
-    <p>文章內容...</p>
-  </div>
+    {% if historys  %}
+      {% for history in historys %}
+        <div class="history_item">
+          <p class="text">{{ history.original_text }}</p>
+          <p class="arrow">↓</p>
+          <p class="text">{{ history.translated_text }}</p>
+          <p class="time">{{ history.created_at }}</p>
+        </div>
+        <hr>
+      {% endfor %}
+    {% else %}
+      <div class="history_item">
+        <p class="text">PLEASE LOG IN FIRST</p>
+      </div>
+    {% endif %}
+   </div>
 {% endblock %}
