@@ -80,16 +80,34 @@ nav ul li a, nav ul li span, header .action {
   border: 1px solid #ff2020;
 }
 
+.translation-form {
+  margin-bottom: 50px;
+}
+
 .history {
   background-color: #f3f3f3;
   padding: 20px;
   margin-top: 20px;
 }
 
-.translation-form {
-  margin-bottom: 50px;
+.history .text {
+  font-family: system-ui;
+  font-size: 10px;
+  margin-block: 0px;
 }
 
+.history .arrow {
+  font-family: system-ui;
+  font-size: 15px;  
+  margin-block: 0px;
+}
+
+.history .time{
+  color: #616161;
+  font-family: system-ui;
+  font-size: 10px;  
+  margin-block: 10px;
+}
 .content:last-child {
   margin-bottom: 0;
 }
