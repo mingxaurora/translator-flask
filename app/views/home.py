@@ -10,19 +10,16 @@ from app.models.history_model import History
 
 bp = Blueprint('home', __name__)
 
-#首頁
+
 @bp.route('/')
 def index():
 
-    #從參數中取得譯文
     translated_text = request.args.get('translated_text')
-    #取得 historys，會顯示在頁面中
     if session.get("user_id"):
         select = db.select(History) \
             .where(History.owner_id == session["user_id"]) \
             .order_by(History.created_at.desc())
         historys = db.session.execute(select).scalars()
-        # 也能使用 historys.all() 轉成 list。根據使用上的需求。
     else:
         historys = None
     
@@ -49,7 +46,7 @@ def translate():
             db.session.add(History(
                 original_text=original_text, 
                 translated_text=translated_text, 
-                owner=g.user  #不會直接出現在資料表中
+                owner=g.user  
             ))
             db.session.commit()
 
