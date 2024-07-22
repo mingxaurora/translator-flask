@@ -29,7 +29,9 @@
 ### 未來
 由於 LLM 的性能對於翻譯的表現越來越優異，因此未來會結合更多 LLM 實現更多其他功能，包含截圖翻譯、多語言精確翻譯、譯文語音生成等等。
 
+## Demo
 
+https://github.com/user-attachments/assets/e2276a2c-a5be-4735-bdda-e04af8c33bc8
 
 ## Config
 
