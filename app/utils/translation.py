@@ -1,9 +1,9 @@
 from transformers import pipeline
 
-
+model = 'facebook/nllb-200-distilled-1.3B'
 translator = pipeline(
     "translation",
-    model='facebook/nllb-200-distilled-600M',
+    model=model,
     device=0
 )
 
