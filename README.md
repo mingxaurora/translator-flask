@@ -53,7 +53,7 @@ $env:SQLALCHEMY_DATABASE_URI = "mysql+pymysql://ming:1234@localhost/geeklogin"
 
 Windows cmd:
 ```
-set FLASK_APP=flaskr
+set FLASK_APP=app
 set FLASK_ENV=development
 flask init-db
 flask run
